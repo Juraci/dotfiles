@@ -1,0 +1,23 @@
+[user]
+	name = Juraci Vieira
+    email = juraci.vieira@gmail.com
+    signingkey = 731741DB
+
+[alias]
+  aa = add .
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  pr = pull --rebase
+  dc = diff --cached
+  lg = log --graph --branches=* --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n 50
+	s = status -sb
+	dff = diff --color --color-words
+	current-branch = rev-parse --abbrev-ref HEAD
+	graph = log --graph --decorate --oneline --branches
+	l = log
+[push]
+  default = current
