@@ -23,6 +23,10 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 
 # brazilian keyboard support
 exec setxkbmap -model abnt2 -layout br
+#exec setxkbmap -model pc105 -layout us
+
+# multiple-monitor shortcut
+bindsym $mod+m exec --no-startup-id xrandr --output HDMI2 --auto --left-of eDP1; exec --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh; exec --no-startup-id nitrogen --restore
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness

@@ -1,14 +1,42 @@
+[colors]
+nord0 = #242831
+nord1 = #3b4252
+nord2 = #434c5e
+nord3 = #4c566a
+nord4 = #d8dee9
+nord5 = #e5e9f0
+nord6 = #eceff4
+nord7 = #8fbcbb
+nord8 = #88c0d0
+nord9 = #81a1c1
+nord10 = #5e81ac
+nord11 = #bf616a
+nord12 = #d08770
+nord13 = #ebcb8b
+nord14 = #a3be8c
+nord15 = #b48ead
+
+background = ${self.nord0}
+background-alt = ${self.nord2}
+foreground = ${self.nord4}
+foreground-alt = ${self.nord3}
+primary = ${self.nord8}
+secondary = ${self.nord7}
+alert = ${self.nord11}
+
 [bar/i3wmthemer_bar]
+monitor = ${env:MONITOR:}
+
 width = 100%
 height = 27
 radius = 0
 fixed-center = false
 
-background = #272827
-foreground = #657b83
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 line-size = 3
-line-color =
+line-color = ${colors.primary}
 
 border-size = 0
 border-color =
@@ -24,8 +52,8 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
 font-2 = "Font Awesome 5 Brands:size=10;1"
 
 modules-left = i3
-modules-center = date
-modules-right = battery wlan eth powermenu
+modules-center =
+modules-right = battery wlan eth date powermenu
 
 tray-position =
 ;tray-padding =
@@ -42,26 +70,26 @@ index-sort = true
 wrapping-scroll = false
 
 label-mode-padding = 2
-label-mode-foreground = #657b83
-label-mode-background = #272827
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background-alt}
 
 label-focused = %index%
-label-focused-background = #4E524F
+label-focused-background = ${colors.primary}
 label-focused-foreground = #272827
 label-focused-padding = 2
 
 label-unfocused = %index%
-label-unfocused-background = #7E807E
+label-unfocused-background = ${colors.background-alt}
 label-unfocused-foreground = #272827
 label-unfocused-padding = 2
 
 label-visible = %index%
-label-visible-background = #7E807E
+label-visible-background = ${self.label-focused-background}
 label-visible-foreground = #272827
 label-visible-padding = 2
 
 label-urgent = %index%
-label-urgent-background = #BA2922
+label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 [module/wlan]
@@ -71,8 +99,8 @@ interval = 3.0
 
 ;format-connected = <ramp-signal> <label-connected>
 format-connected = <ramp-signal>
-format-connected-foreground = #272827
-format-connected-background = #7E807E
+format-connected-foreground = ${colors.foreground-alt}
+format-connected-background = ${colors.background-alt}
 format-connected-padding = 2
 label-connected = %essid%
 
@@ -91,10 +119,10 @@ interface = eno2
 interval = 3.0
 
 format-connected-padding = 2
-format-connected-foreground = #272827
-format-connected-background = #7E807E
+format-connected-foreground = ${colors.foreground-alt}
+format-connected-background = ${colors.background}
 format-connected-prefix = " "
-format-connected-prefix-foreground = #272827
+format-connected-prefix-foreground = ${colors.background-alt}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -119,11 +147,11 @@ date =
 date-alt = " %Y-%m-%d"
 
 time = %H:%M
-time-alt = %H:%M:%S
+ggme-alt = %H:%M:%S
 
 format-prefix = 
 format-foreground = #272827
-format-background = #7E807E
+format-background = ${colors.background-alt}
 format-padding = 2
 
 label = %date% %time%
@@ -136,11 +164,11 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = #657b83
+label-open-foreground = ${colors.foreground}
 label-close =  cancel
-label-close-foreground = #BA2922
+label-close-foreground = ${colors.foreground-alt}
 label-separator = |
-label-separator-foreground = #BA2922
+label-separator-foreground = ${colors.foreground}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -163,6 +191,25 @@ menu-3-0 = log off
 menu-3-0-exec = i3 exit logout
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+mount-1 = /home
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 10
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+spacing = 4
 
 [settings]
 screenchange-reload = true
