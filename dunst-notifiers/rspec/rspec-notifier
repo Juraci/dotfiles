@@ -1,0 +1,21 @@
+#!/bin/bash
+
+passing_regexp="[0-9]+ examples, 0 failure"
+failing_regexp="[0-9]+ examples, [0-9]+ failures*"
+error_regexp="[0-9]+ error occurred outside of examples"
+
+redbg="string:bgcolor:#932525"
+redfr="string:frcolor:#932525" 
+greenbg="string:bgcolor:#159808"
+greenfr="string:frcolor:#159808"
+output=$(eval "$@" | tee /dev/stderr)
+
+if echo $output | egrep "$error_regexp" >/dev/null; then
+  notify-send -u critical -h $redfr -h $redbg "✗ error" "$(echo $output | egrep -o "$error_regexp")"
+elif echo $output | egrep "$passing_regexp" >/dev/null; then
+  notify-send -u critical -h $greenfr -h $greenbg "✓ passing tests" "$(echo $output | egrep -o "$passing_regexp")"
+elif echo $output | egrep "$failing_regexp" >/dev/null; then
+  notify-send -u critical -h $redfr -h $redbg "✗ failed tests" "$(echo $output | egrep -o "$failing_regexp")"
+else
+  notify-send -u critical -h $redfr -h $redbg "✗ unknown error"
+fi
