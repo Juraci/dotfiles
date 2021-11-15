@@ -1,7 +1,7 @@
 #!/bin/bash
 
 passing_regexp="[0-9]+ examples*, 0 failures*"
-failing_regexp="[0-9]+ examples, [0-9]+ failures*"
+failing_regexp="[0-9]+ examples*, [0-9]+ failures*"
 error_regexp="[0-9]+ error occurred outside of examples"
 
 redbg="string:bgcolor:#932525"
