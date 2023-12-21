@@ -1,0 +1,62 @@
+diff --git a/launch.sh b/launch.sh
+index 2b0c7d5..dc2ed23 100755
+--- a/launch.sh
++++ b/launch.sh
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ 
+-THEME="lofi"
++THEME="minimal"
+ 
+ killall polybar
+ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+diff --git a/modules.ini b/modules.ini
+index bea5800..6e93dd4 100644
+--- a/modules.ini
++++ b/modules.ini
+@@ -1,3 +1,3 @@
+-modules-left = bspwm
+-modules-center = mpd
+-modules-right = date weather
++modules-left = date margin weather margin
++modules-center = i3
++modules-right = battery margin memory margin cpu margin pulseaudio margin margin session
+\ No newline at end of file
+diff --git a/themes/minimal/config.ini b/themes/minimal/config.ini
+index 8edca6c..92456c4 100644
+--- a/themes/minimal/config.ini
++++ b/themes/minimal/config.ini
+@@ -7,7 +7,7 @@ include-file = $HOME/polybar-collection/themes/minimal/include-modules.ini
+ width = 100%
+ height = 30
+ offset-y = 0
+-bottom = true
++bottom = false
+ fixed-center = true
+ 
+ wm-restack = bspwm
+diff --git a/themes/minimal/modules/battery.ini b/themes/minimal/modules/battery.ini
+index 7d38945..ab04fc4 100644
+--- a/themes/minimal/modules/battery.ini
++++ b/themes/minimal/modules/battery.ini
+@@ -1,6 +1,6 @@
+ [module/battery]
+ type = internal/battery
+-battery = BAT1
++battery = BAT0
+ adapter = ACAD
+ full-at = 98
+ 
+diff --git a/themes/minimal/modules/session.ini b/themes/minimal/modules/session.ini
+index 9d36e74..8643b8d 100644
+--- a/themes/minimal/modules/session.ini
++++ b/themes/minimal/modules/session.ini
+@@ -1,7 +1,7 @@
+ [module/session]
+ type = custom/text
+ 
+-click-left = lxsession-logout -p ""
++click-left = betterlockscreen -l
+ content = %{T9}%{T-}
+ content-foreground = ${colors.fg-alt}
+ content-padding = 1
