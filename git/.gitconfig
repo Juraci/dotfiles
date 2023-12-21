@@ -1,6 +1,6 @@
 [user]
-	name = Juraci Vieira
-    email = juraci.vieira@gmail.com
+	name = Juraci
+	email = juraci.vieira@gmail.com
     signingkey = 731741DB
 
 [alias]
@@ -26,3 +26,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[pull]
+	rebase = false
+[merge]
+	conflictstyle = diff3
