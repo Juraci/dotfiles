@@ -1,6 +1,0 @@
-" Javascript
-UnBundle 'groenewege/vim-less'
-UnBundle 'briancollins/vim-jst'
-UnBundle 'kchmck/vim-coffee-script'
-
-Bundle 'joukevandermaas/vim-ember-hbs'
