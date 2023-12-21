@@ -1,13 +1,27 @@
-rofi.show-icons:            false
-rofi.modi:                  drun,run,window,ssh
-rofi.lines:                 7
-rofi.line-padding:          10
-rofi.matching:              fuzzy
-rofi.bw:                    0
-rofi.padding:               0
-rofi.separator-style:       none
-rofi.hide-scrollbar:        true
-rofi.line-margin:           0
-rofi.font:                  sans-serif 10
-rofi.columns:               1
-rofi.theme: /home/juraci/.config/rofi/nord.rasi
+configuration {
+  show-icons: false;
+  modi: "drun,run,window,ssh";
+  font: "sans-serif 10";
+  bw: 0;
+  padding: 0;
+  separator-style: "none";
+  line-margin: 0;
+  matching: "fuzzy";
+  sidebar-mode: false;
+	fixed-num-lines: true;
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+@theme "nord"
+listview {
+	lines: 7;
+	columns: 1;
+  line-padding: 10;
+  scrollbar: false;
+}
